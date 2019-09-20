@@ -1,0 +1,519 @@
+/**
+ * @notes:
+ * - Using `hsl` for colors to try this out
+ * - Media query styles in one block added to end of file
+ *
+ * - For speed of demo development:
+ *  -- Working in pixels
+ *  -- Not adjusting font-sizes on mobile
+ *  -- Padding/margins would be better as rems/ems depending on how design scales for smaller viewports
+ *
+ * - Not creating fallbacks for:
+ *  -- CSS custom properties
+ *  -- CSS grid & flexbox
+ *  ... as target browsers are latest and no IE/Edge
+ *
+ * - [Not done] Other things to look at:
+ *  -- Dark mode
+ *  -- Prefers reduced motion settings (if more animation/movement)
+ *
+ */
+
+:root {
+    --sans-serif-font: "Avenir Next", arial, sans-serif;
+    --serif-font: "Merriweather", Georgia, serif;
+
+    --gutter: 20px;
+
+    --hsl-blue-value: 207, 23%, 25%;
+    --hsl-blue-dark-value: 204, 20%, 42%;
+    --hsl-blue-darker-value: 204, 21%, 28%;
+    --hsl-white-value: 60, 10%, 96%;
+
+    --blue: hsl(var(--hsl-blue-value));
+    --blue-dark: hsl(var(--hsl-blue-dark-value));
+    --blue-darker: hsl(var(--hsl-blue-darker-value));
+    --white: hsl(var(--hsl-white-value));
+    --text-color-blue: var(--blue);
+    --shadow-blue: hsl(var(--hsl-blue-value), 75%);
+    --text-color-white: var(--white);
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+.visually-hidden:not(:focus):not(:active) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    clip: rect(0, 0, 0, 0); /* Clip is a deprecated CSS property that many older browsers still support */
+    clip-path: inset(100%);
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font: normal 16px/1.24 var(--sans-serif-font);
+    font-weight: 400;
+    color: var(--text-color-blue);
+    background-color: hsl(60, 67%, 98%); /* subtly different white from text */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 400;
+}
+
+::placeholder {
+    font-size: 0.77rem;
+}
+
+:focus {
+    /* Make browser focus-style consistent and highly visible
+    - Unfortunate side-effect of adding outline on link click, but good for accessibility - make it a feature!
+    In furtue :focus-visible will be the better option; only supported by Firefox at present */
+    outline: 2px solid orange;
+}
+
+a {
+    color: var(--text-color-blue);
+}
+
+a:hover,
+a:focus {
+    text-decoration: none;
+}
+
+.skip-link {
+    display: inline-block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0.75em;
+    color: var(--white);
+    background: var(--blue);
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transform: translateY(-10em);
+    transition: transform 0.2s ease-in-out;
+    z-index: 20;
+}
+
+.skip-link:focus {
+    transform: translateY(0);
+}
+
+.skip-to-bottom-menu {
+    display: block;
+    padding: 10px;
+    color: var(--text-color-white);
+    background-color: var(--blue-darker);
+    border-radius: 4px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.constrain-width {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.page-start {
+    --gutter: 0;
+    position: relative;
+    padding: 0 var(--gutter);
+    background: hsl(212, 30%, 83%) url(../img/fractable.jpg) top left no-repeat;
+    background-size: cover;
+    background-blend-mode: lighten;
+    border-bottom: 1px solid hsl(100, 9%, 94%);
+    overflow: hidden;
+}
+
+.site-control {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background-color: hsl(var(--hsl-blue-value), 80%);
+}
+
+.logo,
+.main-navigation a {
+    margin: 0;
+    padding: 20px;
+    color: var(--text-color-white);
+    font-weight: 700;
+    text-transform: uppercase;
+    text-shadow: var(--shadow-blue) 0 0 1px;
+}
+
+.logo {
+    font-size: 1.25rem;
+    letter-spacing: 0.09rem;
+    text-align: right;
+}
+
+.main-navigation ul {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.main-navigation.viewport-wide {
+    display: none;
+}
+
+.main-navigation.viewport-narrow {
+    display: block;
+    border-top: 6px solid var(--blue-dark);
+}
+
+.main-navigation.viewport-narrow ul {
+    min-height: 100vh;
+    background-color: var(--blue-darker);
+}
+
+.main-navigation li {
+    margin: 0 5px;
+}
+
+.main-navigation a {
+    display: block;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.main-navigation span {
+    position: relative;
+    padding-bottom: 6px;
+}
+
+.main-navigation span::before {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    transform-origin: center;
+    transform: translate(-50%, 0) scaleX(0);
+    transition: transform 0.3s ease-in-out;
+    content: "";
+}
+
+.main-navigation a:hover span::before,
+.main-navigation a:focus span::before,
+.main-navigation a[aria-current] span::before {
+    transform: translate(-50%, 0) scaleX(1);
+}
+
+.main-navigation a:hover,
+.main-navigation a:focus,
+.main-navigation a[aria-current] {
+    text-shadow: none;
+}
+
+.viewport-wide a:hover span,
+.viewport-wide a:focus span,
+.viewport-wide a[aria-current] span {
+    color: var(--text-color-blue);
+}
+
+.viewport-wide span::before {
+    background-color: var(--text-color-blue);
+}
+
+.viewport-narrow a:hover span,
+.viewport-narrow a:focus span,
+.viewport-narrow a[aria-current] span {
+    color: var(--text-color-white);
+}
+
+.viewport-narrow span::before {
+    background-color: var(--text-color-white);
+}
+
+.hero {
+    width: 100%;
+    padding: 30px 20px 20px;
+}
+
+.hero h2 {
+    margin: 0;
+    font-size: 1.875rem;
+}
+
+.hero h2 .larger-text {
+    display: block;
+    font-size: 4.5rem;
+    font-weight: 600;
+    line-height: 1.12;
+}
+
+.hero .intro {
+    margin-top: 0;
+    font-family: var(--serif-font);
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 18px;
+    color: inherit;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.8rem;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+    text-decoration: none;
+    background-color: transparent;
+    border: 2px solid currentColor;
+    border-radius: 50px;
+    -webkit-appearance: none;
+    transition: all 0.2s ease-out;
+}
+
+.button:hover,
+.button:focus {
+    color: var(--white);
+    background-color: var(--blue);
+    border-color: var(--blue);
+}
+
+.button-reverse:hover,
+.button-reverse:focus {
+    color: var(--blue);
+    background-color: var(--white);
+    border-color: var(--white);
+}
+
+.article-header,
+.article-body {
+    font-family: var(--serif-font);
+}
+
+.article-header {
+    margin: 42px 0 18px;
+    padding: 0 var(--gutter);
+    font-size: 1.375rem;
+    font-weight: 700;
+}
+
+.article-body {
+    padding: 0 var(--gutter) 50px;
+    border-bottom: 1px solid hsl(201, 13%, 54%);
+}
+
+.article-body > p:first-child {
+    margin-top: 0;
+}
+
+.article-body > aside {
+    position: relative;
+    margin: 10px 0 30px 14px;
+    break-inside: avoid;
+    color: hsl(206, 30%, 49%);
+}
+
+.article-body blockquote {
+    margin: 0;
+    padding: 0 0 0 46px;
+    font-weight: 700;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+.article-body blockquote::before {
+    position: absolute;
+    top: 6px;
+    left: 0;
+    display: inline-block;
+    font-size: 3rem;
+    line-height: 1;
+    opacity: 0.4;
+    content: "“";
+}
+
+.article-body blockquote p {
+    margin: 0;
+}
+
+.article-body footer {
+    margin-top: 6px;
+    font-size: 0.8rem;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.columns {
+    column-count: 2;
+    column-width: 300px;
+    column-gap: 68px;
+}
+
+.related-content {
+    padding: 58px var(--gutter) 30px;
+    color: var(--text-color-white);
+    background-color: var(--blue-dark);
+    border-top: 1px solid hsl(203, 20%, 37%);
+}
+
+.related-content > ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 54px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}
+
+.related-content figure {
+    margin: 0;
+}
+
+.related-content figcaption {
+    margin-top: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: -0.04rem;
+    text-shadow: var(--shadow-blue) 0 0 2px;
+    text-transform: uppercase;
+}
+
+.box {
+    margin: 0;
+    padding: 16px;
+    border-radius: 2px;
+    background-color: hsl(205, 16%, 48%);
+    border: solid hsl(203, 15%, 48%);
+    box-shadow: 0 0 12px hsl(var(--hsl-blue-value), 50%);
+}
+
+.related-content img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 180px;
+    object-fit: none;
+    object-position: var(--img-position);
+    box-shadow: 0 0 2px hsl(var(--hsl-blue-value), 40%);
+}
+
+.page-end {
+    padding: var(--gutter) 0;
+    color: var(--text-color-white);
+    text-align: center;
+    background-color: var(--blue-darker);
+    border-top: 1px solid hsl(205, 20%, 32%);
+}
+
+.email-subscription h2 {
+    margin: 0 0 7px;
+    padding: 0 var(--gutter);
+    font-family: var(--serif-font);
+    font-size: 0.9rem;
+}
+
+.email-subscription input[type="email"] {
+    min-width: 188px;
+    padding: 14px 20px 12px;
+    background-color: hsl(206, 10%, 86%);
+    border: 0;
+    border-radius: 50px;
+    box-shadow: 0 0 4px hsl(199, 20%, 25%);
+}
+
+/*
+.email-subscription input[type="email"]:valid {}
+.email-subscription input[type="email"]:invalid {}
+*/
+
+.email-subscription .button {
+    margin-left: 6px;
+}
+
+.email-subscription > p {
+    display: inline-block;
+}
+
+.copyright {
+    margin: 26px 0 0;
+    font-size: 0.88rem;
+}
+
+/**
+ * Wide screen styles
+ */
+@media screen and (min-width: 768px) {
+    :root {
+        --gutter: 45px;
+    }
+
+    .skip-to-bottom-menu,
+    .main-navigation.viewport-narrow {
+        display: none;
+    }
+
+    .logo {
+        text-align: initial;
+        float: left;
+    }
+
+    .page-start {
+        --gutter: 45px;
+        min-height: 450px;
+        background-blend-mode: normal;
+    }
+
+    .site-control {
+        display: block;
+        padding: 0;
+        background-color: transparent;
+    }
+
+    .main-navigation ul {
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+
+    .main-navigation.viewport-wide {
+        display: block;
+    }
+
+    .hero {
+        width: 50%;
+        padding: 72px 8px 20px;
+        float: right;
+    }
+
+    .article-body > aside {
+        max-width: 224px;
+        float: right;
+    }
+}

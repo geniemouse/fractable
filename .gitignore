@@ -1,0 +1,11 @@
+node_modules/
+
+# IDE settings files
+*.brackets.json
+*.code-workspace
+*.mswwsettings
+*.sublime*
+
+# OS files
+.DS_Store
+Thumbs.db

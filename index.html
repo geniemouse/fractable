@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Whimsical Widgets</title>
+        <!--// Meta-tags //-->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, shrink-to-fit=no" />
+        <meta name="keywords" content="" />
+        <meta name="description" content="" />
+
+        <!--// Stylesheets //-->
+        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" type="text/css" href="assets/css/index.css" />
+    </head>
+    <body id="top">
+        <a class="skip-link" href="#main">Skip to main content</a>
+
+        <header class="page-start constrain-width">
+            <!-- @note: Could make site-control panel position sticky/fixed.
+                However, some solid background color would need to be applied -->
+            <div class="site-control">
+                <a class="skip-to-bottom-menu" href="#navigation-bottom">
+                    Menu
+                </a>
+
+                <h1 class="logo">Whimsical Widgets</h1>
+
+                <nav id="navigation-top" class="main-navigation viewport-wide" aria-label="Site navigation">
+                    <ul>
+                        <li>
+                            <a href="/" aria-current="page"><span>Home</span></a>
+                        </li>
+                        <li>
+                            <a href="#our-info"><span>Our info</span></a>
+                        </li>
+                        <li>
+                            <a href="#your-info"><span>Your info</span></a>
+                        </li>
+                        <li>
+                            <a href="#other-info"><span>Other info</span></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="hero">
+                <h2>
+                    Frivolous fun with
+                    <span class="larger-text">Fractable</span>
+                </h2>
+                <p class="intro">
+                    Fractal furniture of confounding complexity. <br />Self assembly in only 128 iterations.
+                </p>
+                <p class="cta"><a class="button" href="#learn-more">Learn more</a></p>
+            </div>
+        </header>
+
+        <main id="main" class="constrain-width">
+            <article>
+                <header>
+                    <h2 class="article-header">Insightful information</h2>
+                </header>
+
+                <div class="article-body columns">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni enim totam id sequi maxime
+                        quidem tempore <a href="#">recusandae incidunt</a> debitis laborum. Dolorem sed quia dolorum
+                        odio placeat. Nisi libero obcaecati aliquid!
+                    </p>
+
+                    <p>
+                        Beatae magnam, perspiciatis perferendis illo voluptatum voluptate repellat deleniti nulla earum,
+                        consectetur non, impedit minima ratione quasi alias nostrum iusto. Facilis dolore veritatis
+                        nostrum, nulla eum nam tempore dolorum ipsam!
+                    </p>
+                    <p>
+                        Sit ab sequi praesentium reiciendis quibusdam quaerat aspernatur, quidem amet modi quia
+                        inventore provident culpa rerum maxime ad aut suscipit, expedita voluptate. Deleniti, omnis?
+                        Minima cupiditate optio quos! Neque, reprehenderit!
+                    </p>
+
+                    <aside>
+                        <blockquote>
+                            <p>9 out of 10 people wondered who the other one was</p>
+                            <footer><p>A curious bunch</p></footer>
+                        </blockquote>
+                    </aside>
+
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident nulla illo ipsum quisquam
+                        architecto reprehenderit laboriosam perspiciatis corrupti incidunt nobis, dolorem, deserunt quia
+                        sequi asperiores voluptas quibusdam! Fuga, libero, est!
+                    </p>
+
+                    <p>
+                        Perspiciatis, itaque, veniam! Eaque temporibus porro, vitae tenetur laborum adipisci
+                        exercitationem sint illo sed inventore corrupti eos quos illum doloremque consequatur facere
+                        obcaecati itaque, beatae accusantium mollitia! Labore voluptatum, accusantium.
+                    </p>
+                </div>
+
+                <article class="related-content">
+                    <h2 class="visually-hidden">Related content</h2>
+                    <ul>
+                        <li>
+                            <figure>
+                                <div class="box">
+                                    <img style="--img-position: -109px -448px;" src="assets/img/fractable.jpg" alt="" />
+                                </div>
+                                <figcaption>Framed frames</figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <figure>
+                                <div class="box">
+                                    <img style="--img-position: -234px -233px;" src="assets/img/fractable.jpg" alt="" />
+                                </div>
+                                <figcaption>Nested notches</figcaption>
+                            </figure>
+                        </li>
+                        <li>
+                            <figure>
+                                <div class="box">
+                                    <img style="--img-position: -638px -335px;" src="assets/img/fractable.jpg" alt="" />
+                                </div>
+                                <figcaption>Corners with corners</figcaption>
+                            </figure>
+                        </li>
+                    </ul>
+                </article>
+            </article>
+        </main>
+
+        <footer class="page-end constrain-width" role="contentinfo">
+            <!-- @note: `contentinfo` aria role added for VoiceOver bug
+                HTML validator may warn about this being unnecessary
+            -->
+
+            <form class="email-subscription" action="/" method="post">
+                <h2>Receive recursive recommendations from our fractal friends</h2>
+
+                <p>
+                    <label class="visually-hidden" for="email_id">Email</label>
+                    <input
+                        id="email_id"
+                        name="email"
+                        type="email"
+                        maxlength="254"
+                        minlength="3"
+                        pattern="^(\S)+@(\S)+$"
+                        placeholder="Your email"
+                        value=""
+                    />
+                </p>
+
+                <p>
+                    <input class="button button-reverse" type="submit" value="Subscribe" />
+                </p>
+            </form>
+
+            <p class="copyright">&copy; Whimisical Widgets Inc.</p>
+        </footer>
+
+        <nav id="navigation-bottom" class="main-navigation viewport-narrow" aria-label="Site navigation">
+            <ul>
+                <li>
+                    <a href="/" aria-current="page"><span>Home</span></a>
+                </li>
+                <li>
+                    <a href="#our-info"><span>Our info</span></a>
+                </li>
+                <li>
+                    <a href="#your-info"><span>Your info</span></a>
+                </li>
+                <li>
+                    <a href="#other-info"><span>Other info</span></a>
+                </li>
+                <li><a href="#top">^ Back to top</a></li>
+            </ul>
+        </nav>
+    </body>
+</html>
