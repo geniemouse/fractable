@@ -1,22 +1,20 @@
-# Fractable
+# Fractable <!-- omit in toc -->
 
 A markup challenge.
 
-<!-- MarkdownTOC -->
+---
 
-1. [Notes on approach](#notes-on-approach)
-    1. [`CSS` notes](#css-notes)
-        1. [For speed of demo development](#for-speed-of-demo-development)
-        1. [Not creating fallbacks for](#not-creating-fallbacks-for)
-        1. [Other things to look at \(not done\)](#other-things-to-look-at-not-done)
-    1. [Other comments](#other-comments)
-1. [Requirements](#requirements)
-    1. [Development tasks](#development-tasks)
-    1. [Bonus tasks](#bonus-tasks)
-    1. [Browser support](#browser-support)
-1. [Run the demo locally](#run-the-demo-locally)
-
-<!-- /MarkdownTOC -->
+- [Notes on approach](#notes-on-approach)
+  - [`CSS` notes](#css-notes)
+    - [For speed of demo development](#for-speed-of-demo-development)
+    - [Not creating fallbacks for](#not-creating-fallbacks-for)
+    - [Other things to look at (not done)](#other-things-to-look-at-not-done)
+  - [Other comments](#other-comments)
+- [Requirements](#requirements)
+  - [Development tasks](#development-tasks)
+  - [Bonus tasks](#bonus-tasks)
+  - [Browser support](#browser-support)
+- [Run the demo locally](#run-the-demo-locally)
 
 ---
 
